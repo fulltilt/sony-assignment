@@ -1,101 +1,68 @@
-import Image from "next/image";
+"use client";
+
+import clsx from "clsx";
+import Carousel from "./components/Carousel";
+import { useState } from "react";
+import useWindowSize from "./hooks/useWindowSize";
+
+const images = [
+  { idx: "1", hasForeground: true },
+  { idx: "2", hasForeground: false },
+  { idx: "3", hasForeground: false },
+  { idx: "4", hasForeground: false },
+  { idx: "5", hasForeground: false },
+  { idx: "6", hasForeground: false },
+];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const windowSize = useWindowSize();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  const [active, setActive] = useState(0);
+
+  return (
+    <div
+      style={{
+        backgroundImage:
+          windowSize.width > 768
+            ? `linear-gradient(to left, rgba(37, 45, 55, 0) 40%, #000000 72.92%, #09101A 100%),
+          linear-gradient(180deg, rgba(0, 0, 0, 0) 75%, #000000 100%), url("./${images[active].idx}-background.png")`
+            : `linear-gradient(to left, rgba(37, 45, 55, 0) 60%, #000000 95%, #09101A 100%),
+          linear-gradient(180deg, rgba(0, 0, 0, 0) 15%, #000000 60%), url("./${images[active].idx}-background.png")`,
+      }}
+      className="h-screen bg-cover bg-center relative overflow-clip overlay"
+    >
+      <div className="absolute p-12 sm:p-20 z-10">
+        <h2 className="text-[17px] sm:text-[31px] font-black text-white leading-5 sm:leading-8 w-32 sm:w-56">
+          MORE FROM RICO THE DOG
+        </h2>
+
+        <button className="text-[12px] sm:text-[14px] font-extrabold text-white border-solid border-2 rounded-3xl p-2 mt-24">
+          RICO IS BACK!
+        </button>
+
+        <h1 className="text-[49px] sm:text-[35px] font-black text-white mt-2 ">
+          RICOBOT
+        </h1>
+
+        <p className="text-[14px] sm:text-[16px] font-medium text-white w-72 sm:w-96 mt-2">
+          Charge into a brand-new supersized adventure with RICO across 50
+          exciting and diverse worlds, available now on PS5!
+        </p>
+
+        <button className="text-[14px] sm:text-[16px] font-black text-black bg-white rounded-[2rem] mt-6 p-4">
+          LEARN MORE
+        </button>
+      </div>
+      <Carousel images={images} setActive={setActive} active={active} />
+
+      {images[active].hasForeground && (
+        <img
+          src={`./${images[active].idx}-foreground-cutout.png`}
+          className={clsx(
+            "absolute left-[50%] w-1/2 h-auto top-[-70px] sm:top-[-90px] z-0"
+          )}
+        />
+      )}
     </div>
   );
 }
