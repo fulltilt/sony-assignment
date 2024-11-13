@@ -36,7 +36,7 @@ export default function Home() {
           MORE FROM RICO THE DOG
         </h2>
 
-        <button className="text-[12px] sm:text-[14px] font-extrabold text-white border-solid border-2 rounded-3xl p-2 mt-24">
+        <button className="text-[12px] sm:text-[14px] font-extrabold text-white border-solid border-2 rounded-3xl p-2 mt-12 md:mt-16">
           RICO IS BACK!
         </button>
 

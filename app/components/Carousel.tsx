@@ -11,7 +11,7 @@ const Carousel = ({
   active: number;
 }) => {
   return (
-    <div className="lg:w-[75%] mt-20 text-white z-20 absolute bottom-0 p-12 sm:p-20 grid grid-cols-3 md:flex gap-2 md:gap-4 md:items-end">
+    <div className="grid grid-cols-3 md:flex gap-2 md:gap-4 md:items-end lg:w-[75%] mt-20 text-white z-20 absolute bottom-0 p-12 sm:p-20">
       {images.map((pic, idx) => (
         <div
           key={idx}
