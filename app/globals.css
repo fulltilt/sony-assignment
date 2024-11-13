@@ -36,10 +36,19 @@
   }
 }
 
-.box {
+/* https://dev.to/afif/border-with-gradient-and-radius-387f (adding borders with gradient and radius) */
+.active {
   position: relative;
-  padding: 20px 30px;
-  margin: 5px;
-  display: inline-block;
-  font-size: 30px;
+}
+
+.active::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  border: 4px solid transparent;
+  background: linear-gradient(135deg, black, white, black) 1 border-box;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  mask-composite: exclude;
 }

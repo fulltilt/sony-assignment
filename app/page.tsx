@@ -1,8 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import clsx from "clsx";
 import Carousel from "./components/Carousel";
-import { useState } from "react";
 import useWindowSize from "./hooks/useWindowSize";
 
 const images = [

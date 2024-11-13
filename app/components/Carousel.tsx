@@ -17,12 +17,15 @@ const Carousel = ({
           key={idx}
           className={clsx(
             "rounded-2xl cursor-pointer md:w-[20%] hover:scale-110 duration-200 p-2",
-            active === idx ? "border-[4px] active basis-1/3" : ""
+            active === idx ? "active basis-1/3" : ""
           )}
-          style={{
-            borderImage: "linear-gradient(135deg, black, white, black) 1",
-          }}
         >
+          <div
+            className="absolute -inset-1 rounded-2xl z-[-1]"
+            style={{
+              background: "linear-gradient(135deg, black, white, black) 1",
+            }}
+          ></div>
           <img
             src={`./${pic.idx}-thumbnail.png`}
             onClick={() => setActive(idx)}
